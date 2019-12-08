@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+ /* Step1: Traverse through the sorted arrays simultaneously
+ Step2: Take a temporary array and add the least number to it
+ Step3: Append the remaining elements in arr1 or arr2 in the merged array
+ */
+class Solution {
+  public static void main(String[] args) {
+    
+    int[] arr1 = {1, 2};
+    int[] arr2 = {2, 4, 5, 6};
+    
+    int s1 = arr1.length;
+    int s2 = arr2.length;
+    
+    int[] mergedArray = new int[s1+s2];
+    
+    int i =0, j=0, k = 0;
+    while (i< s1 && j< s2)
+    {
+      if (arr1[i] < arr2[j])
+      {
+        mergedArray[k] = arr1[i];
+        System.out.println(mergedArray[k] + " in Loop ");
+        i++; k++;
+      }
+      else
+      {
+        mergedArray[k] = arr2[j];
+        System.out.println(mergedArray[k] + " in Loop 2 ");
+        j++; k++;
+      }
+    }
+    
+    while (i < s1)
+    {
+      mergedArray[k] = arr1[i];
+      i++; k++;
+    }
+    while (j < s2)
+    {
+        mergedArray[k] = arr2[j];
+      j++; k++;
+    }
+    
+    for ( int prn = 0; prn < (s1 + s2); prn ++ )
+    {
+      System.out.println(mergedArray[prn] + " ");
+    }
+  }
+}
+
