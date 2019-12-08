@@ -1,0 +1,93 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+/*
+ Find whether the provided string is palindrome or not 
+ 
+ Number 
+ String
+ Sentence 
+ 
+*/
+class Solution {
+  public static void main(String[] args) {
+    
+    
+    //int givenValue = 121121;
+    
+    String givenValue = "abcdcba";
+    
+    boolean ispalindrome = false; 
+    
+    ispalindrome = checkForPalindrome(givenValue);
+    
+    System.out.println(ispalindrome);
+    
+    if(ispalindrome)
+    {
+      System.out.println("Given value " + givenValue + " is Palindrome");
+    }
+    else
+    {
+      System.out.println("Given value " + givenValue + " is NOT Palindrome");
+    }
+  }
+  
+  
+ public static boolean checkForPalindrome (int givennumber)
+  {
+    int reversedNum = 0;
+    int balance = 0;
+    
+    int temp = givennumber;
+  
+    while(temp > 0) {
+      
+      balance = temp % 10;
+      reversedNum = reversedNum * 10 + balance;
+      temp = temp / 10;
+      System.out.println(temp);
+    }
+    
+    if (reversedNum == givennumber) 
+    {
+      System.out.println("Returning True");
+      return true;
+    }
+    else
+    {
+      System.out.println("Returning False");
+      return false;
+    }
+ }
+  
+  public static boolean checkForPalindrome (String givenString)
+  {
+    
+    String reversedStr = "";
+    
+    for (int i = givenString.length()-1; i >=0; i--)
+    {
+      reversedStr = reversedStr + givenString.charAt(i);
+    }
+    
+    if(givenString.equals(reversedStr))    {
+      System.out.println("Returning True");
+      return true;
+    }
+    else
+    {
+      System.out.println("Returning False");
+      return false;
+    }
+    
+  }
+  
+}
