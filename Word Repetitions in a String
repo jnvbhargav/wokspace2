@@ -1,0 +1,47 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ Find out the occurrence of a given word in a given array. The word may occur left to right, up to down and vice versa.
+[“Hello”,”Hi”,”How”,”are”,”you”,”Hi”, “there”]
+
+Hello: 1
+Hi : 2
+How: 1
+are:1
+
+
+- String Aray is provided and find the repetive word
+- Traverse throught the string array and Identify each word
+- Compare the other string array and check for repetition
+-   Have counter for the repetive words
+- Print the counters 
+*/
+
+class Solution {
+  public static void main(String[] args) {
+
+    String[] givenstring = {"Hi","there","Hi","Hi","there", "hello"};
+      
+    // Get the Hash Map as String and Interger
+    Map<String, Integer> repetitions = new HashMap <String, Integer>();
+
+    //Run a loop and increment the integer value when there is a repetition
+    for(int i =0; i< givenstring.length; i++)
+    {
+      
+      if (repetitions.containsKey(givenstring[i]))
+      { 
+        repetitions.put(givenstring[i], repetitions.get(givenstring[i])+1);
+      }
+      else
+      {
+        repetitions.put(givenstring[i], 1);
+      }
+    }
+    
+    // Pring the Hash map String and repetition value
+    System.out.println(repetitions);
+    
+  }
+}
