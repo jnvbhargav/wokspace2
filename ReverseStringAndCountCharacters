@@ -1,0 +1,70 @@
+import java.io.*;
+import java.util.*;
+
+/*
+ * To execute Java, please define "static void main" on a class
+ * named Solution.
+ *
+ * If you need more classes, simply define them inline.
+ */
+
+class Solution {
+  public static void main(String[] args) {
+
+    
+    ArrayList<String> strings = new ArrayList<String>();
+    strings.add("Hello, World!");
+    strings.add("Welcome to CoderPad.");
+    strings.add("This pad is running Java " + Runtime.version().feature());
+
+    for (String string : strings) {
+      
+      //Reverse the word in the provided string
+      
+      //Split the String into String array with spaces
+      String splitArray[] = string.split(" ");
+      
+      System.out.println("Given String : " + string);      
+      
+      System.out.println("Number of words in the given String are " + splitArray.length);
+
+      System.out.println("==================");
+      
+      for(int len=splitArray.length-1; len >= 0 ; len--)
+      {
+        System.out.println("Reversed String : " + splitArray[len]);
+        
+        System.out.println("Repeated Character of this word " + splitArray[len] + "are");
+        //Count the characters in the provide Word
+        countCharacters(splitArray[len]);
+        
+        System.out.println("==================");
+
+      }
+    }
+  }
+
+  public static void countCharacters(String givenstring)
+  {
+         // Get the Hash Map as String and Interger
+          Map<Character, Integer> repetitions = new HashMap <Character, Integer>();
+
+          //Run a loop and increment the integer value when there is a repetition
+          for(int i =0; i< givenstring.length(); i++)
+          {
+
+            if (repetitions.containsKey(givenstring.charAt(i)))
+            { 
+              repetitions.put(givenstring.charAt(i),     repetitions.get(givenstring.charAt(i))+1);
+            }
+            else
+            {
+              repetitions.put(givenstring.charAt(i), 1);
+            }
+          }
+
+          // Pring the Hash map String and repetition value
+          System.out.println(repetitions);
+  }
+
+}
