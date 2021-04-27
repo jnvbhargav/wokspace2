@@ -1,0 +1,174 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'magicSquare' function below.
+     *
+Task Description
+
+Write a function that takes in a side length and outputs a magic square.
+
+example function signature in java: public static T magicSquare(int n), where T is whatever you use to represent a magic square.
+
+Context
+A magic square is an n by n grid with the numbers filled in where the rows, columns, and diagonals add up to the same number (15 for the 3x3 square).
+
+This is an example of a magic square
+
+3x3
+3x3 Magic Square Example
+
+ 8 1 6
+ 3 5 7
+ 4 9 2
+
+Method to make a magic square
+Start at the top-middle and fill in 1.
+
+Go up 1 and right 1 cell and fill in the next number. If this goes off the square, wrap around, meaning if you go off the right you end up on the left. Similar for top (end up on bottom), right (end up on left), and bottom (end up on top) [like pac-man as an example]. Example would be 1 to 2 and 2 to 3 in the 3x3 square.
+
+If the cell is already filled go down from the original cell (example: 3 to 4 and 6 to 7 in the 3x3 example).
+
+Step by step demonstration for the first 4 numbers
+
+- 1 -        - 1 -    - 1 -     - 1 - 
+- - -        - - -    3 - -     3 - - 
+- - -        - - 2    - - 2     4 - 2 
+ 
+Type here and press Enter
+
+     * The function accepts INTEGER size as parameter.
+   
+
+    public static T magicSquare(int size) {
+    // Write your code here
+    
+    // Intialize the multi dimenstional array 
+    // Depends of the size
+    int[][] magicsquare = new int[size][size];
+    
+    // Initial position as 1 
+    // i --> j 
+    int i,j;
+    i= size/2;
+    j = size-1;
+    
+    //For loop to fill the magic square 9 (n*n)
+    for(int num = 1; num <= size*size ;)
+    {
+
+        if(i== -1 && j ==size)
+        {
+            j = size - 2;
+            i=0;
+        }
+        else 
+        if (j== size)
+        {
+            j = 0;
+        }
+        
+        if (i < size)
+        {
+            i = size-1;
+        }
+        
+        //Second COndition
+        if (magicsquare[i][j] !=0)
+        {
+            j-=2;
+            i++;
+            continue;
+        }
+        else // Set the Number 
+         magicsquare[i][j] = num++;
+         
+         //Increment the Room to traverse
+        j++;
+        i--;
+    }
+    
+  
+    
+    
+    // Print our Matrix n*n  
+     System.out.println("The Magic Square for " + n
+                           + ":");
+        System.out.println("Sum of each row or column "
+                           + n * (n * n + 1) / 2 + ":");
+        for (i = 0; i < n; i++) {
+            for (j = 0; j < n; j++)
+                System.out.print(magicSquare[i][j] + " ");
+            System.out.println();
+        }
+
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
+        int size = Integer.parseInt(bufferedReader.readLine().trim());
+
+        Result.magicSquare(size);
+
+        bufferedReader.close();
+    }
+}
+
+*/
+
+
+public static void main(String[] args) {
+
+    System.out.print("Give an odd number: ");
+    int n = console.nextInt();
+    int[][] magicSquare = new int[n][n];
+
+    int number = 1;
+    int row = 0;
+    int column = n / 2;
+    int curr_row;
+    int curr_col;
+    while (number <= n * n) {
+        magicSquare[row][column] = number;
+        number++;
+        curr_row = row;
+        curr_col = column;
+        row -= 1;
+        column += 1;
+        if (row == -1) {
+            row = n - 1;
+        }
+        if (column == n) {
+            column = 0;
+        }
+        if (magicSquare[row][column] != 0) {
+            row = curr_row + 1;
+            column = curr_col;
+            if (row == -1) {
+                row = n - 1;
+            }
+        }
+    }
+
+    for (int i = 0; i < magicSquare.length; i++) {
+        for (int j = 0; j < magicSquare.length; j++) {
+            System.out.print(magicSquare[i][j] + " ");
+        }
+        System.out.println();
+    }
+}
