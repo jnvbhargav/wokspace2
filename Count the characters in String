@@ -1,0 +1,61 @@
+import java.io.*;
+import java.util.*;
+import java.text.*;
+import java.math.*;
+import java.util.regex.*;
+
+public class Solution {
+
+    static void characterCount(String inputstr)
+    {
+          HashMap<Character, Integer> charCountMap = new HashMap <Character, Integer>
+        ();
+        
+        char[] strArray = inputstr.toCharArray();
+        
+        for (char c : strArray){
+            
+            if(charCountMap.containsKey(c))
+            {
+                charCountMap.put(c,charCountMap.get(c)+1 );
+            }
+            else{
+                charCountMap.put(c,1 );
+            }
+        }
+        // Traverse through the map and print
+        for(Map.Entry entry : charCountMap.entrySet())
+        {
+            System.out.println(entry.getKey() + " " + entry.getValue() );
+        }
+    }
+
+    public static void main(String args[] ) throws Exception {
+        
+        // Input is going to be string of a word
+        
+        // Output is to see how many repetitions of a particular word
+    
+        String str = "united states of america";
+        
+        characterCount(str);
+        
+        // Test Cases 
+        
+        // Test for the Empty string
+        // Special characters
+        // Sentense This is a apple
+        // i18n 
+        // numbers 
+        // Load or perf 
+        // O(n) time complexinty
+        // Exception handling 
+        // Run time errors
+        // I/O Exception 
+        // No Input 
+        // Upper case and lower case
+        // ALpha numeric
+        // Space handling
+        
+    }
+}
